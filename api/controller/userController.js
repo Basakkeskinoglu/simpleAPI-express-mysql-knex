@@ -8,3 +8,11 @@ exports.getUsers = async function (req, res, next) {
         return res.status(400).json({ status: 400, message: e.message });
     }
 }
+exports.getUserByID=async function(req,res,next){
+    try{ const db=require('../../knexfile.js');
+        UserService.getById(db, req.params.id).then(data => {
+        res.send(data)});
+    }catch (e) {
+        return res.status(400).json({ status: 400, message: e.message });
+    }
+}

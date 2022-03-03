@@ -8,6 +8,7 @@ app.get('/',router,/*(req, res) =>{
 
  /const sqlq=knex('users').select('*');
   console.log(sqlq.then(data => {res.send(data)}) )}*/);
+app.get('/user/:id', router);
 app.listen(7555, () => {
   console.log('Server running on http://localhost:7555')
 })
