@@ -20,6 +20,20 @@ exports.updateUser=async function (knex, id, userFields) {
       .where({ id })
       .update(userFields);
   }
+exports.deleteUser=async function(knex, id) {
+    return knex("users")
+      .where({ id })
+      .delete();
+  }
+exports.createUser=async function(knex, newUser){
+    return knex
+      .insert(newUser)
+      .into("users")
+      .returning("*")
+      .then(rows => {
+        return rows[0];
+      })
+}
 /*
 exports.ById= async function(query,id){
     try{

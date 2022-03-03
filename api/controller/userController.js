@@ -26,3 +26,15 @@ exports.updatedUser=async function(req,res,next){
         return res.status(400).json({ status: 400, message: e.message });
     }
 }
+exports.deleteUser=async function(req, res) {
+    const db = require('../../knexfile.js');
+    UserService.deleteUser(db, req.params.id).then(data => {
+      res.status(204).end();
+    });
+};
+exports.createUser=async function(req,res){
+    const db = require('../../knexfile.js');
+    UserService.createUser(db, req.body).then(data => {
+        res.send(data);
+    });
+};
