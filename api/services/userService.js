@@ -15,6 +15,11 @@ exports.getById =async function (knex, id) {
       .where("id", id)
       .first();
   }
+exports.updateUser=async function (knex, id, userFields) {
+    return knex("users")
+      .where({ id })
+      .update(userFields);
+  }
 /*
 exports.ById= async function(query,id){
     try{

@@ -16,3 +16,13 @@ exports.getUserByID=async function(req,res,next){
         return res.status(400).json({ status: 400, message: e.message });
     }
 }
+exports.updatedUser=async function(req,res,next){
+    try{ const db=require('../../knexfile.js');
+    console.log("controllera giriyor");
+        UserService.updateUser(db, req.params.id, req.body).then(() => {
+      res.status(204).end();
+    });
+    }catch (e) {
+        return res.status(400).json({ status: 400, message: e.message });
+    }
+}
